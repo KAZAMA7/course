@@ -1,0 +1,13 @@
+[all]
+10.74.251.138
+10.74.251.53
+
+[client2]
+10.74.251.53
+
+[client1]
+10.74.251.138
+
+[universal:children]
+client1
+client2

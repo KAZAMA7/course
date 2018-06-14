@@ -1,0 +1,11 @@
+---
+    - name: starting "{{ web_service }}" service
+      service:
+        name: "{{ web_service }}"
+        state: started
+        enabled: true
+    - name: Starting "{{ firewall_service }}"
+      service:
+        name: "{{ firewall_service }}"
+        state: started
+        enabled: true

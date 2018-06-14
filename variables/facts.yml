@@ -1,0 +1,8 @@
+---
+- name: This playbook is to demonstrate the usage of facts
+  hosts: all
+  tasks:
+    - name: This is just a debug module to print the fqdn and the ip address
+      debug:
+        msg: "The name of the server is {{ ansible_fqdn }} and the ip address is {{ ansible_default_ipv4.address }}. The gateway and the subnet are {{ ansible_default_ipv4.gateway }} and {{ ansible_default_ipv4.broadcast }}"
+

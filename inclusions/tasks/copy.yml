@@ -1,0 +1,5 @@
+---
+    - name: copying the content into the index.html
+      copy:
+        content: "This host {{ ansible_fqdn }} is managed by Ansible \n "
+        dest: /var/www/html/index.html

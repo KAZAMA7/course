@@ -1,0 +1,54 @@
+---
+- name:  Playbook for installing the FTP server on client1 server
+  hosts: client1
+  remote_user: devops
+  become: True
+  become_user: root
+  become_method: sudo
+  tasks:
+
+     - name: Installing FTP package
+       yum:
+         name: lftp
+         state: installed
+     - name: Installing vsftpd package
+       yum:
+         name: vsftpd
+         state: latest
+     - name: Installing Apache package
+       yum:
+         name: httpd
+         state: latest
+     - name: Installing firewalld package
+       yum:
+         name: firewalld
+         state: latest
+     - name: opening ports and adding firewall rules required for vsftpd
+       firewalld:
+         service: ftp
+         immediate: true
+         state: enabled
+         permanent: true
+     - name: Opening ports and adding firewall rules for httpd
+       firewalld:
+         service: http
+         immediate: true
+         state: enabled
+         permanent: true
+     - name: Enabling and starting the vsftpd service
+       service: 
+         name: vsftpd
+         state: started
+     - name: Creating index.html file
+       file:
+         path: /var/www/html/index.html
+         state: touch
+         owner: root
+         group: root
+         mode: 0755
+         content: "This server is managed by Ansible\n"
+     - name: Testing the server and its contents
+       uri:
+         url: http://localhost
+         return_content: yes
+...

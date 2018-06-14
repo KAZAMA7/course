@@ -1,0 +1,20 @@
+---
+- name: This playbook is used for demonstrating simple loops
+  hosts: client1
+  tasks:
+    - name: installing packages
+      yum: 
+        name: "{{ item }}"
+        state: installed
+      with_items:
+        - dovecot
+        - postfix
+    - name: starting the services
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      with_items:
+        - dovecot
+        - postfix
+

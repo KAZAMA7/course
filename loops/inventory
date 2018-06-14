@@ -1,0 +1,9 @@
+localhost
+client1
+client2
+
+[servers]
+client1
+client2
+
+

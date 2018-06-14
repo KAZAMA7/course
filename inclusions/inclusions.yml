@@ -1,0 +1,29 @@
+---
+- name: This playbook is used to practice inclusions
+  hosts: servers
+  tasks:
+   - name: Including the variables required for the play
+     include_vars:  vars/variables.yml
+
+   - name: Including the task for package installation on the clients
+     include: tasks/installation.yml
+
+   - name: Including the task for starting the services
+     include: tasks/services.yml
+
+   - name: Including the task for firewall ports and services
+     include: tasks/firewall.yml
+
+   - name: Copying the server content to the servers
+     include: tasks/copy.yml
+    
+- name: Checking the deployment of the httpd server
+  hosts: servers
+  tasks:
+    - name: checking the deployment
+      uri:
+        url: http://localhost
+        register: output
+    - name: Checking the debug
+      debug:
+        msg: output

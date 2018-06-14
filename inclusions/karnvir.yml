@@ -1,0 +1,11 @@
+---
+- name: testing karnvirs approach
+  hosts: client2
+  tasks:
+    - name: including the variables required for the play
+      include_vars: vars/karnvir.yml
+
+    - name: creating user on the client2
+      user:
+        name: "{{ package }}"
+        state: present

@@ -1,0 +1,10 @@
+---
+- name: This playbook demonstrates the simple when condition
+  hosts: servers
+  tasks: 
+  - name: Installing the mariadb server
+    yum:
+      name: tree
+      state: latest
+    with_items: "{{ ansible_mounts }}"
+    when: item.mount == "/" and item.size_available > 2505414

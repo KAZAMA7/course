@@ -1,0 +1,10 @@
+---
+  - name: Installing webserver on the clients
+    yum:
+      name: "{{ web_package }}"
+      state: latest
+
+  - name: Installing Firewall package
+    yum:
+      name: "{{ firewall_package }}"
+      state: latest

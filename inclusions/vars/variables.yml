@@ -1,0 +1,6 @@
+---
+web_package: httpd
+firewall_package: firewalld
+web_service: httpd
+firewall_service: firewalld
+firewall_rule: http

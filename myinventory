@@ -1,0 +1,13 @@
+[all]
+10.74.251.138
+10.74.251.53
+
+[grafana]
+10.74.251.53
+
+[puppet]
+10.74.251.138
+
+[universal:children]
+puppet
+grafana

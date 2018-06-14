@@ -1,0 +1,7 @@
+---
+  - name: Including the task for firewall ports and services
+    firewalld:
+      service: "{{ firewall_rule }}"
+      state: enabled
+      permanent: true
+      immediate: true

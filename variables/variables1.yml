@@ -1,0 +1,12 @@
+---
+- name: This is a playbook to demonstrate the host variables
+  hosts: servers 
+  tasks:
+    - name: Installng the {{ package }} package 
+      yum:
+        name: "{{ package }}"
+        state: latest
+    - name: starting the service {{ service }}
+      service:
+        name: "{{ service }}"
+        state: started
